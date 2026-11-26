@@ -4,7 +4,7 @@ import { MENU, INDICADORES, AGENTES, POR_CONFIGURAR, INFRA_INTRO, INFRA_NOTA, SE
 import { ocultar } from './acessos.js';
 
 export { esc };
-const VERSAO_CSS = '2026-11-26b';
+const VERSAO_CSS = '2026-11-26c';
 
 // Ícones de linha (24×24, traço 1.7), no estilo dos ecrãs aprovados
 const I = {
@@ -36,12 +36,12 @@ const I = {
 };
 export const icone = (k, classe = 'icone') => `<svg class="${classe}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${I[k] || ''}</svg>`;
 
-const CABECA = (titulo) => `<!doctype html>
+const CABECA = (titulo, script = '') => `<!doctype html>
 <html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#141414">
 <title>${esc(titulo)}</title>
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/ia.css?v=${VERSAO_CSS}"><link rel="stylesheet" href="/acessos.css"></head>`;
+<link rel="stylesheet" href="/ia.css?v=${VERSAO_CSS}"><link rel="stylesheet" href="/acessos.css">${script ? `<script src="${esc(script)}?v=${VERSAO_CSS}" defer></script>` : ''}</head>`;
 
 function menuLateral(ativo, u) {
   return MENU.map((s) => `<p class="menu-seccao">${esc(s.seccao)}</p><ul>${s.itens.filter((i) => !i.soAdmin || (u && u.admin)).map((i) => {
@@ -52,15 +52,15 @@ function menuLateral(ativo, u) {
 
 function menuConta(u) {
   if (!u) return '';
-  const admin = u.admin ? `<a href="/admin/utilizadores">Utilizadores</a><a href="/admin/acessos">Níveis de Acesso e Ações</a>` : '';
+  const admin = u.admin ? `<a href="/admin/utilizadores">Utilizadores</a><a href="/admin/acessos">Níveis de Acesso e Ações</a><a href="/admin/ia">Configuração da IA</a>` : '';
   return `<details class="conta"><summary aria-label="Conta">${icone('conta')}</summary><div class="conta-menu">
 <p class="conta-quem"><strong>${esc(u.nome || u.email)}</strong><span>${esc(u.perfilNome || '')}${u.demo ? ' · demonstração local' : ''}</span></p>
 ${admin}<a href="https://dashboard.fercopor.app">Outras aplicações FERCOPOR</a>${u.demo ? '' : '<a href="/auth/sair">Terminar sessão</a>'}</div></details>`;
 }
 
 // Página completa com o menu (o HTML passa por ocultar(): ligações sem acesso não aparecem)
-export function pagina({ titulo, ativo = '', conteudo, utilizador }) {
-  const corpo = `${CABECA(titulo === 'FERCOPOR IA' ? titulo : `${titulo} · FERCOPOR IA`)}
+export function pagina({ titulo, ativo = '', conteudo, utilizador, script = '' }) {
+  const corpo = `${CABECA(titulo === 'FERCOPOR IA' ? titulo : `${titulo} · FERCOPOR IA`, script)}
 <body>
 <header class="topo">
   <a class="marca" href="/"><img src="/fercopor-logo.svg" alt="FERCOPOR" width="128" height="20"><span>IA</span></a>
@@ -75,11 +75,28 @@ export function pagina({ titulo, ativo = '', conteudo, utilizador }) {
   return utilizador ? ocultar(corpo, utilizador) : corpo;
 }
 
-// Dashboard — Intelligence Overview
-export function conteudoInicio() {
-  const cartoes = INDICADORES.map((c) => `<article class="cartao indicador">${icone(c.icone)}<h2>${esc(c.nome)}</h2><p class="valor" aria-label="Sem dados">—</p></article>`).join('');
-  const agentes = AGENTES.map((a) => `<li><a class="agente" href="/agentes">${icone(a.icone)}<span class="agente-texto"><strong>${esc(a.nome)}</strong><span>${esc(a.estado)}</span></span>${icone('seta', 'icone seta')}</a></li>`).join('');
+// Dashboard — Intelligence Overview. valores: { Agentes, 'Consumo mensal' } → { valor, nota } (sem valor: «—», sem dados).
+// assistente: true quando o motor de IA e a base de dados estão configurados.
+export function conteudoInicio({ valores = {}, assistente = false, agentesAtivos = {} } = {}) {
+  const cartoes = INDICADORES.map((c) => {
+    const v = valores[c.nome];
+    return `<article class="cartao indicador">${icone(c.icone)}<h2>${esc(c.nome)}</h2>${v ? `<p class="valor">${esc(v.valor)}</p>${v.nota ? `<p class="nota indicador-nota">${esc(v.nota)}</p>` : ''}` : '<p class="valor" aria-label="Sem dados">—</p>'}</article>`;
+  }).join('');
+  const agentes = AGENTES.map((a) => `<li><a class="agente" href="/agentes">${icone(a.icone)}<span class="agente-texto"><strong>${esc(a.nome)}</strong><span>${esc(agentesAtivos[a.nome] ? 'Ativo' : a.estado)}</span></span>${icone('seta', 'icone seta')}</a></li>`).join('');
   const atual = ROADMAP.find((f) => f.atual);
+  const caixa = assistente
+    ? `<form class="caixa-pergunta" method="get" action="/assistente">
+    <label for="pergunta" class="so-leitor">Pergunta à FERCOPOR IA</label>
+    <input id="pergunta" name="q" type="text" placeholder="Pergunta à FERCOPOR IA..." maxlength="2000" autocomplete="off">
+    <div class="caixa-acoes"><span class="caixa-anexos"></span><button type="submit" class="botao-enviar" aria-label="Perguntar">${icone('enviar', 'icone enviar')}</button></div>
+  </form>
+  <p class="nota">A conversa abre no Assistente IA e fica guardada em «Conversas».</p>`
+    : `<div class="caixa-pergunta" aria-disabled="true">
+    <label for="pergunta" class="so-leitor">Pergunta à FERCOPOR IA</label>
+    <input id="pergunta" type="text" placeholder="Pergunta à FERCOPOR IA..." disabled>
+    <div class="caixa-acoes"><span class="caixa-anexos">${icone('clip')}${icone('microfone')}</span>${icone('enviar', 'icone enviar')}</div>
+  </div>
+  <p class="nota">O assistente fica disponível no fim da fase ${esc(atual.n)} · ${esc(atual.nome)}.</p>`;
   return `<h1>Intelligence Overview</h1>
 <p class="subtitulo">Centro de inteligência corporativa</p>
 <section class="grelha-indicadores" aria-label="Indicadores">${cartoes}</section>
@@ -87,12 +104,7 @@ export function conteudoInicio() {
   ${icone('brilho', 'icone grande')}
   <h2>Como posso ajudar?</h2>
   <p class="suave">Consulta informação, analisa dados e executa tarefas.</p>
-  <div class="caixa-pergunta" aria-disabled="true">
-    <label for="pergunta" class="so-leitor">Pergunta à FERCOPOR IA</label>
-    <input id="pergunta" type="text" placeholder="Pergunta à FERCOPOR IA..." disabled>
-    <div class="caixa-acoes"><span class="caixa-anexos">${icone('clip')}${icone('microfone')}</span>${icone('enviar', 'icone enviar')}</div>
-  </div>
-  <p class="nota">O assistente fica disponível no fim da fase ${esc(atual.n)} · ${esc(atual.nome)}.</p>
+  ${caixa}
 </section>
 <section class="faixa-roadmap">
   <div><p class="etiqueta">Fase atual</p><p><strong>${esc(atual.n)} · ${esc(atual.nome)}</strong> — ${esc(atual.texto)}</p></div>

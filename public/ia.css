@@ -113,6 +113,90 @@ h2 { font-size: 17px; font-weight: 600; margin: 0 0 10px; }
 .botao-microsoft:hover { background: var(--fundo-suave); }
 .entrada-rodape { color: var(--texto-suave); font-size: 13px; display: flex; align-items: center; gap: 6px; margin: 0; }
 
+/* Assistente IA */
+.chat { display: flex; flex-direction: column; min-height: calc(100vh - 150px); }
+.chat-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.chat-topo h1 { overflow-wrap: anywhere; }
+.chat-acoes { display: flex; gap: 8px; flex-wrap: wrap; }
+.mensagens { list-style: none; margin: 4px 0 16px; padding: 0; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.mensagens-vazio { text-align: center; padding: 40px 12px; border: 1px dashed var(--linha); border-radius: var(--raio); }
+.mensagens-vazio h2 { font-size: 22px; margin: 10px 0 6px; }
+.msg { max-width: 760px; }
+.msg-quem { margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-suave); }
+.msg-utilizador { align-self: flex-end; }
+.msg-utilizador .msg-texto { background: var(--fundo-suave); border-radius: var(--raio) var(--raio) 4px var(--raio); padding: 10px 14px; }
+.msg-utilizador .msg-quem { text-align: right; }
+.msg-ia .msg-texto { border: 1px solid var(--linha); border-radius: 4px var(--raio) var(--raio) var(--raio); padding: 12px 16px; background: #fff; }
+.msg-texto { white-space: pre-wrap; overflow-wrap: anywhere; }
+.msg-texto:has(p, ul, ol, pre, h3, h4) { white-space: normal; }
+.msg-texto p { margin: 0 0 10px; } .msg-texto p:last-child { margin-bottom: 0; }
+.msg-texto ul, .msg-texto ol { margin: 0 0 10px; padding-left: 22px; }
+.msg-texto h3, .msg-texto h4 { margin: 12px 0 6px; font-size: 16px; }
+.msg-texto code { font-family: ui-monospace, Consolas, monospace; font-size: 13.5px; background: var(--fundo-suave); padding: 1px 5px; border-radius: 5px; }
+.msg-texto pre { background: #1c1c1c; color: #f5f5f4; padding: 12px; border-radius: 10px; overflow-x: auto; margin: 0 0 10px; }
+.msg-texto pre code { background: none; padding: 0; color: inherit; }
+.msg-texto a { color: var(--destaque); }
+.msg-espera { color: var(--texto-suave); }
+.msg-meta { margin: 6px 2px 0; font-size: 12px; color: var(--texto-suave); }
+.msg-aviso { margin: 8px 0 0; padding: 8px 12px; border-radius: 10px; background: var(--destaque-suave); font-size: 14px; }
+.chat-erro { margin: 0 0 12px; padding: 10px 12px; border-radius: 10px; background: #fdecea; color: #8a1c13; }
+.compositor { position: sticky; bottom: 0; background: var(--fundo); padding: 8px 0 4px; }
+.compositor textarea { width: 100%; border: 0; font: inherit; color: var(--texto); background: transparent; padding: 0; resize: vertical; min-height: 48px; max-height: 40vh; }
+.compositor textarea:focus { outline: none; }
+.caixa-pergunta:focus-within { border-color: var(--destaque); box-shadow: 0 0 0 1px var(--destaque); }
+.nota-compositor { font-size: 12px; color: var(--texto-suave); }
+.botao-enviar { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: transparent; color: var(--texto); cursor: pointer; padding: 0; }
+.botao-enviar:hover { background: var(--fundo-suave); }
+.botao-enviar:disabled { opacity: .45; cursor: progress; }
+.agente-seletor { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 14px; color: var(--texto-suave); }
+.agente-seletor select { font: inherit; padding: 6px 10px; border: 1px solid var(--linha); border-radius: 8px; background: #fff; color: var(--texto); }
+.indicador-nota { margin-top: 8px; font-size: 12px; }
+.lista-motivos { margin: 0; padding-left: 20px; color: var(--texto-suave); }
+
+/* Conversas */
+.lista-conversas { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.conversa-linha { display: flex; align-items: center; gap: 10px; border: 1px solid var(--linha); border-radius: var(--raio); padding: 4px 8px 4px 4px; }
+.conversa-linha a { flex: 1; display: flex; flex-direction: column; padding: 10px 12px; text-decoration: none; border-radius: 9px; min-width: 0; }
+.conversa-linha a:hover { background: var(--fundo-suave); }
+.conversa-linha a strong { overflow-wrap: anywhere; }
+.conversa-linha a span { color: var(--texto-suave); font-size: 13px; }
+.conversa-linha form { margin: 0; }
+.botao-texto { border: 0; background: none; font: inherit; font-size: 14px; color: var(--texto-suave); text-decoration: underline; cursor: pointer; padding: 8px 10px; border-radius: 8px; }
+.botao-texto:hover { color: #8a1c13; background: #fdecea; }
+
+/* Modelos, Monitorização e Configuração da IA */
+.grelha-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grelha-4 + .nota { margin: 0 0 18px; }
+.tabela code { font-size: 12px; color: var(--texto-suave); font-weight: 400; }
+.form-ia fieldset { margin: 0 0 14px; min-width: 0; }
+.form-ia legend { font-weight: 600; font-size: 16px; padding: 0 6px; }
+.campos { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+.campo { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.campo > span { font-weight: 500; }
+.campo small { color: var(--texto-suave); font-size: 12px; }
+.campo input[type="number"], .campo select, .campo textarea { font: inherit; padding: 8px 10px; border: 1px solid #c9c9c6; border-radius: 8px; background: #fff; color: var(--texto); width: 100%; }
+.campo textarea { resize: vertical; }
+.campo-largo { margin-top: 12px; }
+.campo-caixa { flex-direction: row; align-items: center; gap: 8px; align-self: end; padding-bottom: 8px; }
+.campo-caixa input { width: 18px; height: 18px; accent-color: var(--destaque); }
+.identidade { white-space: pre-wrap; background: var(--fundo-suave); padding: 12px; border-radius: 10px; font: inherit; font-size: 14px; margin: 0 0 8px; }
+.botao-principal { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border: 1px solid var(--texto); border-radius: 999px; background: var(--texto); color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+.botao-principal:hover { background: #000; }
+
+/* Integrações: resultado do teste de ligação */
+.verificacoes { list-style: none; margin: 12px 0; padding: 0; display: grid; gap: 8px; }
+.verificacao { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: start; padding: 10px 12px; border: 1px solid var(--linha); border-radius: 10px; }
+.verificacao p { margin: 2px 0 0; color: var(--texto-suave); font-size: 14px; overflow-wrap: anywhere; }
+.verificacao-estado { display: inline-block; text-align: center; padding: 3px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.verificacao.ok .verificacao-estado { background: #e7f3ea; color: #1d5b2c; }
+.verificacao.falha .verificacao-estado { background: #fdecea; color: #8a1c13; }
+.verificacao.falha { border-color: #f1c4bf; }
+.metricas { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin: 14px 0 0; }
+.metricas div { background: var(--fundo-suave); border-radius: 10px; padding: 10px 12px; }
+.metricas dt { font-size: 12px; color: var(--texto-suave); }
+.metricas dd { margin: 2px 0 0; font-weight: 600; overflow-wrap: anywhere; }
+.metricas code { font-size: 12px; font-weight: 400; color: var(--texto-suave); }
+
 /* Páginas de acessos dentro do layout */
 .conteudo .acessos { max-width: none; }
 
@@ -133,5 +217,7 @@ h2 { font-size: 17px; font-weight: 600; margin: 0 0 10px; }
   .tabela th, .tabela td { padding: 0; border: 0; } .tabela td:first-of-type { grid-column: 1; grid-row: 2; color: var(--texto-suave); }
   .tabela td:last-child { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
 }
+@media (max-width: 900px) { .grelha-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .nota-compositor { display: none; } .msg { max-width: 100%; } }
 @media (max-width: 520px) { .grelha-indicadores { grid-template-columns: 1fr 1fr; gap: 10px; } .indicador { min-height: 104px; } h1 { font-size: 24px; } }
-@media print { .topo, .lateral, .menu-movel { display: none; } .estrutura { display: block; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+@media print { .topo, .lateral, .menu-movel, .compositor, .chat-acoes { display: none; } .estrutura { display: block; } }

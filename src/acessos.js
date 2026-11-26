@@ -22,7 +22,11 @@ export const AC = criarAcessos({
 });
 
 // Ação de cada endereço (null: sem verificação — Dashboard, autenticação e administração, que é só da ADM)
-const ACOES = Object.fromEntries(MENU.flatMap((s) => s.itens).filter((i) => i.acao && i.href !== '/').map((i) => [i.href, i.acao]));
+// Os endereços da API do assistente exigem a mesma ação que a página correspondente.
+const ACOES = {
+  ...Object.fromEntries(MENU.flatMap((s) => s.itens).filter((i) => i.acao && i.href !== '/').map((i) => [i.href, i.acao])),
+  '/api/assistente': 'pagina.assistente',
+};
 export function acaoDoPedido(caminho) {
   for (const [p, a] of Object.entries(ACOES)) if (caminho === p || caminho.startsWith(p + '/')) return a;
   return null;

@@ -10,6 +10,9 @@
   "keep_vars": true,
   "observability": { "enabled": true },
   // Utilizadores, níveis de acesso e registo de alterações (Padrão de Acessos). Criada na primeira publicação.
-  "kv_namespaces": [ { "binding": "IA_KV" } ]
-  // Fase 01 (a seguir): D1 (base de dados operacional) e AI Gateway — ver a página «Infraestrutura e Roadmap».
+  "kv_namespaces": [ { "binding": "IA_KV" } ],
+  // Base de dados operacional da IA: conversas, mensagens e registo de pedidos (tokens, custo, limites). Criada na primeira
+  // publicação, como a KV; o esquema é criado pela app na primeira utilização (src/ia/bd.js).
+  "d1_databases": [ { "binding": "IA_DB" } ]
+  // Segredo obrigatório no painel: ANTHROPIC_API_KEY. Opcional: AI_GATEWAY_ANTHROPIC_URL (Cloudflare AI Gateway).
 }

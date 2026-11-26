@@ -55,11 +55,22 @@ test('Infraestrutura e Roadmap: todos os serviços, prioridades e as 7 fases', a
 });
 
 test('páginas por configurar abrem sem inventar dados', async () => {
-  for (const p of ['/assistente', '/agentes', '/reunioes', '/integracoes', '/configuracoes']) {
+  for (const p of ['/agentes', '/reunioes', '/configuracoes']) {
     const { r, texto } = await abrir(p);
     assert.equal(r.status, 200, p);
     assert.match(texto, /Esta área ainda não está configurada/);
   }
+  // Assistente, Conversas e Monitorização sem motor de IA nem base de dados: «Por configurar», sem dados inventados
+  for (const p of ['/assistente', '/conversas', '/monitorizacao']) {
+    const { r, texto } = await abrir(p);
+    assert.equal(r.status, 200, p);
+    assert.match(texto, /O motor de IA ainda não está configurado/, p);
+  }
+  const i = await abrir('/integracoes');
+  assert.match(i.texto, /Anthropic · motor de IA/);
+  assert.match(i.texto, /Estado: <strong>por configurar/);
+  const m = await abrir('/modelos');
+  assert.match(m.texto, /Motor de IA: <strong>por configurar/);
 });
 
 test('fora da lista: não entra (regra de entrada por omissão)', async () => {

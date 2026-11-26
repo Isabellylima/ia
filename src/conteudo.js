@@ -26,19 +26,15 @@ export const MENU = [
   ] },
 ];
 
-// Páginas ainda por configurar: título e frase curta (sem números nem funcionalidades inventadas)
+// Páginas ainda por configurar: título e frase curta (sem números nem funcionalidades inventadas). Assistente IA,
+// Conversas, Modelos e Monitorização já têm páginas próprias (src/paginasIA.js).
 export const POR_CONFIGURAR = {
-  assistente: { titulo: 'Assistente IA', texto: 'Conversa com a FERCOPOR IA para consultar informação, analisar dados e executar tarefas.' },
-  conversas: { titulo: 'Conversas', texto: 'Histórico das conversas com o assistente e com os agentes.' },
   agentes: { titulo: 'Agentes IA', texto: 'Agentes especializados por área, com as suas ferramentas e tarefas.' },
   conhecimento: { titulo: 'Conhecimento', texto: 'Documentação interna e conhecimento corporativo disponível para pesquisa.' },
   memoria: { titulo: 'Memória', texto: 'Memória semântica usada pelo assistente e pelos agentes.' },
-  modelos: { titulo: 'Modelos', texto: 'Modelos de IA disponíveis e respetiva configuração.' },
   automacoes: { titulo: 'Automações', texto: 'Rotinas e tarefas automáticas.' },
   reunioes: { titulo: 'Reuniões', texto: 'Áudio, transcrições e resultados de reuniões.' },
   relatorios: { titulo: 'Relatórios', texto: 'Relatórios gerados pela FERCOPOR IA.' },
-  integracoes: { titulo: 'Integrações', texto: 'Ligações às aplicações e departamentos da FERCOPOR.' },
-  monitorizacao: { titulo: 'Monitorização', texto: 'Pedidos de IA, consumo e funcionamento dos serviços.' },
   configuracoes: { titulo: 'Configurações', texto: 'Definições gerais da FERCOPOR IA.' },
 };
 

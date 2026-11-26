@@ -10,9 +10,10 @@
     "packages/*"
   ],
   "dependencies": {
-    "hono": "4.13.16",
+    "@anthropic-ai/sdk": "1.8.0",
     "@fercopor/acessos": "1.2.0",
     "@fercopor/login": "1.2.0",
-    "@fercopor/ui": "1.1.0"
+    "@fercopor/ui": "1.1.0",
+    "hono": "4.13.16"
   }
 }
