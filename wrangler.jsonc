@@ -1,4 +1,4 @@
-// FERCOPOR AI — Worker «ia» (Cloudflare Workers ligado ao GitHub Isabellylima/ia). Endereço previsto: ia.fercopor.app
+// FERCOPOR IA — Worker «ia» (Cloudflare Workers ligado ao GitHub Isabellylima/ia). Endereço previsto: ia.fercopor.app
 {
   "name": "ia",
   "main": "src/index.js",

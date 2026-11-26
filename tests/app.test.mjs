@@ -1,4 +1,4 @@
-// FERCOPOR AI de ponta a ponta: login obrigatório, Padrão de Acessos, páginas e conteúdos da infraestrutura e do roadmap.
+// FERCOPOR IA de ponta a ponta: login obrigatório, Padrão de Acessos, páginas e conteúdos da infraestrutura e do roadmap.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import worker from '../src/index.js';
@@ -34,7 +34,7 @@ test('login por configurar: ninguém entra', async () => {
 test('administradora: Dashboard igual aos ecrãs aprovados e menu completo', async () => {
   const { r, texto } = await abrir('/');
   assert.equal(r.status, 200);
-  for (const t of ['FERCOPOR AI', 'Ambiente interno', 'Intelligence Overview', 'Centro de inteligência corporativa', 'Como posso ajudar?', 'Pergunta à FERCOPOR AI', 'Agentes especializados', 'Commercial Agent', 'Meeting Agent', 'Data Quality Agent', 'Por configurar']) assert.ok(texto.includes(t), t);
+  for (const t of ['FERCOPOR IA', 'Ambiente interno', 'Intelligence Overview', 'Centro de inteligência corporativa', 'Como posso ajudar?', 'Pergunta à FERCOPOR IA', 'Agentes especializados', 'Commercial Agent', 'Meeting Agent', 'Data Quality Agent', 'Por configurar']) assert.ok(texto.includes(t), t);
   for (const i of MENU.flatMap((s) => s.itens)) assert.ok(texto.includes(`>${i.nome.replace('&', '&amp;')}<`), i.nome);
   assert.match(texto, /href="\/admin\/utilizadores"/);
   assert.match(texto, /Níveis de Acesso e Ações/);

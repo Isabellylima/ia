@@ -1,4 +1,4 @@
-// Conteúdo fixo da FERCOPOR AI: menu, agentes especializados, infraestrutura Cloudflare e roadmap de desenvolvimento.
+// Conteúdo fixo da FERCOPOR IA: menu, agentes especializados, infraestrutura Cloudflare e roadmap de desenvolvimento.
 // Textos aprovados pela ADM (2026-11-26). Alterar aqui muda as páginas; as ações de acesso estão em acessos.js.
 
 // Menu lateral (secção → itens). «acao» liga cada item ao catálogo de acessos (o servidor confirma em cada pedido).
@@ -28,7 +28,7 @@ export const MENU = [
 
 // Páginas ainda por configurar: título e frase curta (sem números nem funcionalidades inventadas)
 export const POR_CONFIGURAR = {
-  assistente: { titulo: 'Assistente IA', texto: 'Conversa com a FERCOPOR AI para consultar informação, analisar dados e executar tarefas.' },
+  assistente: { titulo: 'Assistente IA', texto: 'Conversa com a FERCOPOR IA para consultar informação, analisar dados e executar tarefas.' },
   conversas: { titulo: 'Conversas', texto: 'Histórico das conversas com o assistente e com os agentes.' },
   agentes: { titulo: 'Agentes IA', texto: 'Agentes especializados por área, com as suas ferramentas e tarefas.' },
   conhecimento: { titulo: 'Conhecimento', texto: 'Documentação interna e conhecimento corporativo disponível para pesquisa.' },
@@ -36,10 +36,10 @@ export const POR_CONFIGURAR = {
   modelos: { titulo: 'Modelos', texto: 'Modelos de IA disponíveis e respetiva configuração.' },
   automacoes: { titulo: 'Automações', texto: 'Rotinas e tarefas automáticas.' },
   reunioes: { titulo: 'Reuniões', texto: 'Áudio, transcrições e resultados de reuniões.' },
-  relatorios: { titulo: 'Relatórios', texto: 'Relatórios gerados pela FERCOPOR AI.' },
+  relatorios: { titulo: 'Relatórios', texto: 'Relatórios gerados pela FERCOPOR IA.' },
   integracoes: { titulo: 'Integrações', texto: 'Ligações às aplicações e departamentos da FERCOPOR.' },
   monitorizacao: { titulo: 'Monitorização', texto: 'Pedidos de IA, consumo e funcionamento dos serviços.' },
-  configuracoes: { titulo: 'Configurações', texto: 'Definições gerais da FERCOPOR AI.' },
+  configuracoes: { titulo: 'Configurações', texto: 'Definições gerais da FERCOPOR IA.' },
 };
 
 // Indicadores do Dashboard: ainda sem dados (mostram «—» até haver serviços ligados)

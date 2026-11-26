@@ -21,4 +21,4 @@ http.createServer(async (req, res) => {
   const r = await worker.fetch(new Request(url, { method: req.method, headers: req.headers }), env, {});
   res.writeHead(r.status, Object.fromEntries(r.headers));
   res.end(Buffer.from(await r.arrayBuffer()));
-}).listen(porta, () => console.log(`FERCOPOR AI (demonstração) em http://localhost:${porta}/`));
+}).listen(porta, () => console.log(`FERCOPOR IA (demonstração) em http://localhost:${porta}/`));

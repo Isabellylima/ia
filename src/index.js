@@ -1,4 +1,4 @@
-// FERCOPOR AI — centro de inteligência corporativa (Cloudflare Worker «ia», servidor Hono, pacotes @fercopor/*).
+// FERCOPOR IA — centro de inteligência corporativa (Cloudflare Worker «ia», servidor Hono, pacotes @fercopor/*).
 // Ordem de segurança, igual às outras apps FERCOPOR:
 //   1. configuração e domínio   2. /auth/* (login Microsoft)   3. sessão   4. administração (só ADM; POST só da mesma origem)
 //   5. ação de cada endereço (o servidor decide; o menu só esconde)   6. páginas   7. erros
@@ -66,7 +66,7 @@ app.use('*', async (c, next) => {
 });
 
 // 6. Páginas
-app.get('/', (c) => pag(c, { titulo: 'FERCOPOR AI', ativo: 'dashboard', conteudo: P.conteudoInicio() }));
+app.get('/', (c) => pag(c, { titulo: 'FERCOPOR IA', ativo: 'dashboard', conteudo: P.conteudoInicio() }));
 app.get('/infraestrutura', (c) => pag(c, { titulo: 'Infraestrutura e Roadmap', ativo: 'infraestrutura', conteudo: P.conteudoInfraestrutura() }));
 for (const id of Object.keys(POR_CONFIGURAR)) app.get(`/${id}`, (c) => pag(c, { titulo: POR_CONFIGURAR[id].titulo, ativo: id, conteudo: P.conteudoPorConfigurar(id) }));
 

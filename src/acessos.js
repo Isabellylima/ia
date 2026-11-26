@@ -1,4 +1,4 @@
-// Padrão de Acessos FERCOPOR na FERCOPOR AI: catálogo de ações (um por item do menu) e nível de origem. A lógica comum
+// Padrão de Acessos FERCOPOR na FERCOPOR IA: catálogo de ações (um por item do menu) e nível de origem. A lógica comum
 // está no pacote @fercopor/acessos (igual em todas as apps). App nova: sem lista herdada; até a ADM gravar a lista,
 // só entram os ADMIN_EMAILS. Regra de entrada por omissão: quem não está na lista não entra.
 import { criarAcessos, ErroAcessos, ESTILO_ACESSOS, ocultarSemAcesso } from '@fercopor/acessos';
@@ -11,7 +11,7 @@ export const CATALOGO = [
 const TODAS = CATALOGO.map((c) => c.id);
 
 export const AC = criarAcessos({
-  app: 'FERCOPOR AI',
+  app: 'FERCOPOR IA',
   kv: 'IA_KV',
   catalogo: CATALOGO,
   niveisOrigem: { equipa: 'Equipa' },

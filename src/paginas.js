@@ -1,4 +1,4 @@
-// Páginas da FERCOPOR AI (HTML gerado no servidor, sem scripts nem estilos em linha: a CSP não os permite).
+// Páginas da FERCOPOR IA (HTML gerado no servidor, sem scripts nem estilos em linha: a CSP não os permite).
 import { esc } from '@fercopor/ui';
 import { MENU, INDICADORES, AGENTES, POR_CONFIGURAR, INFRA_INTRO, INFRA_NOTA, SERVICOS, ROADMAP } from './conteudo.js';
 import { ocultar } from './acessos.js';
@@ -60,10 +60,10 @@ ${admin}<a href="https://dashboard.fercopor.app">Outras aplicações FERCOPOR</a
 
 // Página completa com o menu (o HTML passa por ocultar(): ligações sem acesso não aparecem)
 export function pagina({ titulo, ativo = '', conteudo, utilizador }) {
-  const corpo = `${CABECA(titulo === 'FERCOPOR AI' ? titulo : `${titulo} · FERCOPOR AI`)}
+  const corpo = `${CABECA(titulo === 'FERCOPOR IA' ? titulo : `${titulo} · FERCOPOR IA`)}
 <body>
 <header class="topo">
-  <a class="marca" href="/"><img src="/fercopor-logo.svg" alt="FERCOPOR" width="128" height="20"><span>AI</span></a>
+  <a class="marca" href="/"><img src="/fercopor-logo.svg" alt="FERCOPOR" width="128" height="20"><span>IA</span></a>
   <div class="topo-direita"><span class="ambiente">Ambiente interno</span>${menuConta(utilizador)}</div>
 </header>
 <div class="estrutura">
@@ -88,8 +88,8 @@ export function conteudoInicio() {
   <h2>Como posso ajudar?</h2>
   <p class="suave">Consulta informação, analisa dados e executa tarefas.</p>
   <div class="caixa-pergunta" aria-disabled="true">
-    <label for="pergunta" class="so-leitor">Pergunta à FERCOPOR AI</label>
-    <input id="pergunta" type="text" placeholder="Pergunta à FERCOPOR AI..." disabled>
+    <label for="pergunta" class="so-leitor">Pergunta à FERCOPOR IA</label>
+    <input id="pergunta" type="text" placeholder="Pergunta à FERCOPOR IA..." disabled>
     <div class="caixa-acoes"><span class="caixa-anexos">${icone('clip')}${icone('microfone')}</span>${icone('enviar', 'icone enviar')}</div>
   </div>
   <p class="nota">O assistente fica disponível no fim da fase ${esc(atual.n)} · ${esc(atual.nome)}.</p>
@@ -107,7 +107,7 @@ export function conteudoInfraestrutura() {
   const linhas = SERVICOS.map((s) => `<tr><th scope="row">${esc(s.servico)}</th><td>${esc(s.finalidade)}</td><td><span class="selo selo-${esc(s.tipo)}">${esc(s.prioridade)}</span></td></tr>`).join('');
   const fases = ROADMAP.map((f) => `<li class="fase${f.atual ? ' atual' : ''}"><span class="fase-n">${esc(f.n)}</span><div><h3>${esc(f.nome)}${f.atual ? ' <span class="selo selo-imediata">Fase inicial</span>' : ''}</h3><p>${esc(f.texto)}</p></div></li>`).join('');
   return `<h1>Infraestrutura e Roadmap</h1>
-<p class="subtitulo">Base técnica proposta para a FERCOPOR AI e fases de desenvolvimento.</p>
+<p class="subtitulo">Base técnica proposta para a FERCOPOR IA e fases de desenvolvimento.</p>
 <section class="cartao bloco">
   <h2>${icone('nuvem')}Infraestrutura Cloudflare</h2>
   <p>${esc(INFRA_INTRO)}</p>
@@ -133,10 +133,10 @@ export function conteudoPorConfigurar(id) {
 // Página de entrada (login Microsoft), igual às outras apps FERCOPOR
 export function paginaEntrada(mensagem = '', status = 200) {
   const erro = status >= 400;
-  return { status, html: `${CABECA('FERCOPOR AI')}
+  return { status, html: `${CABECA('FERCOPOR IA')}
 <body class="pagina-entrada"><main class="entrada">
   <div class="entrada-cartao">
-    <p class="marca marca-entrada"><img src="/fercopor-logo.svg" alt="FERCOPOR" width="128" height="20"><span>AI</span></p>
+    <p class="marca marca-entrada"><img src="/fercopor-logo.svg" alt="FERCOPOR" width="128" height="20"><span>IA</span></p>
     <h1>Iniciar sessão</h1>
     <p class="suave">Use a sua conta Microsoft 365 da FERCOPOR (<strong>@fercopor.pt</strong>).</p>
     ${mensagem ? `<p class="entrada-aviso${erro ? ' erro' : ''}" role="${erro ? 'alert' : 'status'}">${esc(mensagem)}</p>` : ''}

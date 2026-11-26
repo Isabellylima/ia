@@ -1,4 +1,4 @@
-# FERCOPOR AI
+# FERCOPOR IA
 
 Centro de inteligência corporativa da FERCOPOR (app interna). Worker Cloudflare `ia`; endereço previsto `ia.fercopor.app`.
 Fase atual do roadmap: **01 · Foundation** (infraestrutura, interface, autenticação, base de dados e AI Core).
