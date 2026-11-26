@@ -4,7 +4,7 @@ import { MENU, INDICADORES, AGENTES, POR_CONFIGURAR, INFRA_INTRO, INFRA_NOTA, SE
 import { ocultar } from './acessos.js';
 
 export { esc };
-const VERSAO_CSS = '2026-11-26a';
+const VERSAO_CSS = '2026-11-26b';
 
 // Ícones de linha (24×24, traço 1.7), no estilo dos ecrãs aprovados
 const I = {
@@ -38,7 +38,7 @@ export const icone = (k, classe = 'icone') => `<svg class="${classe}" viewBox="0
 
 const CABECA = (titulo) => `<!doctype html>
 <html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#141414">
 <title>${esc(titulo)}</title>
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/ia.css?v=${VERSAO_CSS}"><link rel="stylesheet" href="/acessos.css"></head>`;
@@ -63,7 +63,7 @@ export function pagina({ titulo, ativo = '', conteudo, utilizador }) {
   const corpo = `${CABECA(titulo === 'FERCOPOR AI' ? titulo : `${titulo} · FERCOPOR AI`)}
 <body>
 <header class="topo">
-  <a class="marca" href="/">${icone('cerebro', 'marca-icone')}<span>FERCOPOR AI</span></a>
+  <a class="marca" href="/"><img src="/fercopor-logo.svg" alt="FERCOPOR" width="128" height="20"><span>AI</span></a>
   <div class="topo-direita"><span class="ambiente">Ambiente interno</span>${menuConta(utilizador)}</div>
 </header>
 <div class="estrutura">
@@ -136,13 +136,13 @@ export function paginaEntrada(mensagem = '', status = 200) {
   return { status, html: `${CABECA('FERCOPOR AI')}
 <body class="pagina-entrada"><main class="entrada">
   <div class="entrada-cartao">
-    <p class="marca">${icone('cerebro', 'marca-icone')}<span>FERCOPOR AI</span></p>
+    <p class="marca marca-entrada"><img src="/fercopor-logo.svg" alt="FERCOPOR" width="128" height="20"><span>AI</span></p>
     <h1>Iniciar sessão</h1>
     <p class="suave">Use a sua conta Microsoft 365 da FERCOPOR (<strong>@fercopor.pt</strong>).</p>
     ${mensagem ? `<p class="entrada-aviso${erro ? ' erro' : ''}" role="${erro ? 'alert' : 'status'}">${esc(mensagem)}</p>` : ''}
     <a class="botao-microsoft" href="/auth/entrar"><svg viewBox="0 0 21 21" width="20" height="20" aria-hidden="true"><rect x="1" y="1" width="9" height="9" fill="#F25022"/><rect x="11" y="1" width="9" height="9" fill="#7FBA00"/><rect x="1" y="11" width="9" height="9" fill="#00A4EF"/><rect x="11" y="11" width="9" height="9" fill="#FFB900"/></svg>Iniciar sessão com Microsoft</a>
     <p class="nota">A palavra-passe é pedida pela Microsoft, nunca por esta aplicação.</p>
   </div>
-  <p class="entrada-rodape"><img src="/fercopor-logo.svg" alt="FERCOPOR" width="102" height="16"> · Uso interno</p>
+  <p class="entrada-rodape">FERCOPOR · Uso interno</p>
 </main></body></html>` };
 }

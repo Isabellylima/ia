@@ -19,24 +19,25 @@ h2 { font-size: 17px; font-weight: 600; margin: 0 0 10px; }
 :focus-visible { outline: 2px solid var(--destaque); outline-offset: 2px; }
 
 /* Topo */
-.topo { display: flex; align-items: center; justify-content: space-between; height: 58px; padding: 0 20px; border-bottom: 1px solid var(--linha); position: sticky; top: 0; background: var(--fundo); z-index: 20; }
-.marca { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; text-decoration: none; margin: 0; }
-.marca-icone { width: 22px; height: 22px; }
-.topo-direita { display: flex; align-items: center; gap: 12px; color: var(--texto-suave); }
+.topo { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 20px; background: radial-gradient(120% 140% at 85% -20%, #2B2822 0%, #141414 58%); color: #FFF9EB; box-shadow: inset 0 -1px 0 rgba(255, 249, 235, .06); position: sticky; top: 0; z-index: 20; }
+.marca { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: #FFF9EB; margin: 0; }
+.marca img { display: block; width: 128px; height: 20px; }
+.marca span { color: #B49A55; font-size: 10.5px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; }
+.topo-direita { display: flex; align-items: center; gap: 12px; color: rgba(255, 249, 235, .7); font-size: 14px; }
 .conta { position: relative; }
-.conta summary { list-style: none; cursor: pointer; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: var(--texto); }
+.conta summary { list-style: none; cursor: pointer; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255, 249, 235, .7); color: #FFF9EB; }
 .conta summary::-webkit-details-marker { display: none; }
-.conta summary:hover { background: var(--fundo-suave); }
+.conta summary:hover, .conta[open] summary { background: #FFF9EB; color: #141414; }
 .conta summary .icone { width: 22px; height: 22px; }
-.conta-menu { position: absolute; right: 0; top: 42px; min-width: 250px; background: #fff; border: 1px solid var(--linha); border-radius: var(--raio); box-shadow: 0 12px 32px rgba(0,0,0,.1); padding: 8px; display: flex; flex-direction: column; }
+.conta-menu { position: absolute; right: 0; top: 46px; min-width: 250px; background: #fff; border: 1px solid var(--linha); border-radius: var(--raio); box-shadow: 0 12px 32px rgba(0,0,0,.18); padding: 8px; display: flex; flex-direction: column; }
 .conta-menu a { padding: 9px 10px; border-radius: 8px; text-decoration: none; color: var(--texto); }
 .conta-menu a:hover { background: var(--fundo-suave); }
 .conta-quem { margin: 0 0 6px; padding: 8px 10px 12px; border-bottom: 1px solid var(--linha); display: flex; flex-direction: column; color: var(--texto); }
 .conta-quem span { color: var(--texto-suave); font-size: 13px; }
 
 /* Estrutura e menu lateral */
-.estrutura { display: grid; grid-template-columns: 290px minmax(0, 1fr); min-height: calc(100vh - 58px); }
-.lateral { padding: 18px 8px 32px 10px; border-right: 1px solid transparent; position: sticky; top: 58px; height: calc(100vh - 58px); overflow-y: auto; }
+.estrutura { display: grid; grid-template-columns: 290px minmax(0, 1fr); min-height: calc(100vh - 64px); }
+.lateral { padding: 18px 8px 32px 10px; border-right: 1px solid transparent; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
 .lateral ul, .menu-movel ul { list-style: none; margin: 0; padding: 0 0 14px; border-bottom: 1px solid var(--linha); margin-bottom: 14px; }
 .lateral ul:last-child, .menu-movel ul:last-child { border-bottom: 0; }
 .menu-seccao { margin: 6px 0 8px; padding: 0 8px; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--texto-suave); }
@@ -104,7 +105,7 @@ h2 { font-size: 17px; font-weight: 600; margin: 0 0 10px; }
 .pagina-entrada { background: var(--fundo-suave); }
 .entrada { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 24px; }
 .entrada-cartao { width: 100%; max-width: 420px; background: #fff; border: 1px solid var(--linha); border-radius: 16px; padding: 30px; }
-.entrada-cartao .marca { margin-bottom: 26px; }
+.entrada-cartao .marca-entrada { display: flex; margin: -30px -30px 26px; padding: 22px 30px; background: #141414; border-radius: 16px 16px 0 0; }
 .entrada-cartao h1 { font-size: 24px; }
 .entrada-aviso { padding: 10px 12px; border-radius: 10px; background: var(--destaque-suave); }
 .entrada-aviso.erro { background: #fdecea; color: #8a1c13; }
