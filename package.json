@@ -1,0 +1,18 @@
+{
+  "name": "fercopor-ia",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs packages/*/tests/*.test.mjs",
+    "local": "node tools/servidor-local.mjs"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "hono": "4.13.16",
+    "@fercopor/acessos": "1.2.0",
+    "@fercopor/login": "1.2.0",
+    "@fercopor/ui": "1.1.0"
+  }
+}

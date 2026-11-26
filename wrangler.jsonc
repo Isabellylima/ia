@@ -1,0 +1,15 @@
+// FERCOPOR AI — Worker «ia» (Cloudflare Workers ligado ao GitHub Isabellylima/ia). Endereço previsto: ia.fercopor.app
+{
+  "name": "ia",
+  "main": "src/index.js",
+  "compatibility_date": "2025-06-01",
+  "workers_dev": true,
+  // Estilo, logótipo e ícones; tudo o resto passa pelo Worker (login obrigatório)
+  "assets": { "directory": "public", "binding": "ASSETS" },
+  // Mantém os segredos do painel (MICROSOFT_*, ADMIN_EMAILS, SESSION_SECRET) em cada publicação
+  "keep_vars": true,
+  "observability": { "enabled": true },
+  // Utilizadores, níveis de acesso e registo de alterações (Padrão de Acessos). Criada na primeira publicação.
+  "kv_namespaces": [ { "binding": "IA_KV" } ]
+  // Fase 01 (a seguir): D1 (base de dados operacional) e AI Gateway — ver a página «Infraestrutura e Roadmap».
+}
